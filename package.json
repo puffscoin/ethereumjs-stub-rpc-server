@@ -1,7 +1,7 @@
 {
-  "name": "ethereumjs-stub-rpc-server",
+  "name": "puffscoinjs-stub-rpc-server",
   "version": "2.2.0",
-  "description": "Stub server for testing JavaScript ethereum clients.",
+  "description": "Stub server for testing JavaScript PUFFScoin clients.",
   "author": "",
   "main": "./source/index.js",
   "types": "./source/index.d.ts",
@@ -10,13 +10,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ethereumjs/ethereumjs-stub-rpc-server.git"
+    "url": "git+https://github.com/puffscoin/puffscoinjs-stub-rpc-server.git"
   },
   "license": "CC0-1.0",
   "bugs": {
-    "url": "https://github.com/ethereumjs/ethereumjs-stub-rpc-server/issues"
+    "url": "https://github.com/puffscoin/puffscoinjs-stub-rpc-server/issues"
   },
-  "homepage": "https://github.com/ethereumjs/ethereumjs-stub-rpc-server#readme",
+  "homepage": "https://github.com/puffscoin/puffscoinjs-stub-rpc-server#readme",
   "dependencies": {
     "oboe": "2.1.4",
     "ws": "5.1.1"
