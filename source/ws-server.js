@@ -29,7 +29,7 @@ function WsServer(address) {
     }.bind(this));
   }.bind(this));
 
-  this.addResponder(ethSubscribeResponder.bind(this));
+  this.addResponder(puffsSubscribeResponder.bind(this));
 }
 
 WsServer.prototype = Object.create(AbstractServer.prototype);
@@ -48,9 +48,9 @@ WsServer.prototype.destroy = function (callback) {
 module.exports = WsServer;
 
 /**
- * This responder responds to `eth_subscribe` method calls with a null subscription ID
+ * This responder responds to `puffs_subscribe` method calls with a null subscription ID
  */
-function ethSubscribeResponder(request) {
-  if (request.method !== "eth_subscribe") return undefined;
+function puffsSubscribeResponder(request) {
+  if (request.method !== "puffs_subscribe") return undefined;
   return "0x00000000000000000000000000000000";
 }
