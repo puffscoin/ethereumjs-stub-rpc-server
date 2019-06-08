@@ -180,11 +180,11 @@ function netVersionResponder(request) {
 }
 
 /**
- * This responder responds to `eth_getBlockByNumber` method calls with a reasonably shaped block
+ * This responder responds to `puffs_getBlockByNumber` method calls with a reasonably shaped block
  */
 function puffsGetBlockByNumberResponder(request) {
   if (request.method !== "puffs_getBlockByNumber") return undefined;
-  if (!request.params || !request.params[0] || typeof request.params[0] !== "string") return new Error("eth_getBlockByNumber requires a block number (string) as the first parameter.");
+  if (!request.params || !request.params[0] || typeof request.params[0] !== "string") return new Error("puffs_getBlockByNumber requires a block number (string) as the first parameter.");
   var blockNumber;
   if (request.params[0] === "latest") blockNumber = this.blocks.length - 1;
   else if (request.params[0] === "earliest") blockNumber = 0;
@@ -199,9 +199,9 @@ function puffsGetBlockByNumberResponder(request) {
  * 
  * @param {object} request - JSON-RPC request
  */
-function ethGetBlockByHashResponder(request) {
-  if (request.method !== "eth_getBlockByHash") return undefined;
-  if (!request.params || !request.params[0]) return new Error("eth_getBlockByHash requires a block hash as the first parameter");
+function puffsGetBlockByHashResponder(request) {
+  if (request.method !== "puffs_getBlockByHash") return undefined;
+  if (!request.params || !request.params[0]) return new Error("puffs_getBlockByHash requires a block hash as the first parameter");
   var blockHash = request.params[0];
   for (var i = 0; i < this.blocks.length; ++i) {
     var block = this.blocks[i];
@@ -211,7 +211,7 @@ function ethGetBlockByHashResponder(request) {
 }
 
 /**
- * Responds to eth_blockNumber requests with the number of the most recently mined block.
+ * Responds to puffs_blockNumber requests with the number of the most recently mined block.
  * 
  * @param {object} request - JSON-RPC request
  */
@@ -267,7 +267,7 @@ function puffsCallResponder(request) {
 /**
  * This responder responds to `puffs_getLogs` method calls with an empty array
  */
-function ethGetLogsResponder(request) {
+function puffsGetLogsResponder(request) {
   if (request.method !== "puffs_getLogs") return undefined;
   return [];
 }
