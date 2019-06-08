@@ -15,7 +15,7 @@ function testProtocol(transportType, address) {
   function submitJsonRpc(method, params) {
     assert.typeOf(method, "string");
     assert.instanceOf(params, Array);
-    var requestJson = JSON.stringify({ jsonrpc: "2.0", id: 1, method: method, params: params });
+    var requestJson = JSON.stringify({ jsonrpc: "2.0", id: 420, method: method, params: params });
     // simple single-use/stateless JSON-RPC submission
     switch (transportType) {
       case "HTTP":
@@ -52,7 +52,7 @@ function testProtocol(transportType, address) {
   afterEach((done) => server.destroy(done));
 
   it("responds to net_version with default", () => {
-    var expectedResult = { jsonrpc: "2.0", id: 1, result: "default stub rpc server version" };
+    var expectedResult = { jsonrpc: "2.0", id: 420, result: "default stub rpc server version" };
 
     return submitJsonRpc("net_version", []).then((responseJso) => {
       assert.deepEqual(responseJso, expectedResult);
@@ -60,7 +60,7 @@ function testProtocol(transportType, address) {
   });
 
   it("responds to stubbed net_version", () => {
-    var expectedResult = { jsonrpc: "2.0", id: 1, result: "apple" };
+    var expectedResult = { jsonrpc: "2.0", id: 420, result: "apple" };
     server.addResponder((jso) => (jso.method === "net_version") ? "apple" : undefined);
 
     return submitJsonRpc("net_version", []).then((responseJso) => {
