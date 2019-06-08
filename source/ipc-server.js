@@ -34,7 +34,7 @@ function IpcServer(ipcPath) {
   }.bind(this));
   this.underlyingServer.listen(ipcPath);
 
-  this.addResponder(ethSubscribeResponder.bind(this));
+  this.addResponder(puffsSubscribeResponder.bind(this));
 }
 
 IpcServer.prototype = Object.create(AbstractServer.prototype);
